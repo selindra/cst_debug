@@ -6,6 +6,8 @@ Created on Thu Nov 18 10:43:15 2021
 @author: selin
 """
 import matplotlib.pyplot as plt
+
+
 def filesumscript(filename):
     with open(filename) as f:
         s=0
@@ -15,12 +17,13 @@ def filesumscript(filename):
                 s+=int(line[4])
     return s
 
-
-for i in range(0,239):
-    sum=[]
+sum = []
+for i in range(0,238):   
     i+=1
-    filename = '/Users/selin/Documents/work/file_script/file{}.txt'.format(i)
-    x=filesumscript(filename)
-    sum = sum.append(x)
+    filename = '/Users/selin/Documents/git/cst_debug/file{}.txt'.format(i)
+    x=filesumscript(filename)/10e+8
+    sum.append(x)
     
-                 
+plt.plot(sum, 'palevioletred')           
+plt.xlabel('File number')
+plt.ylabel('Gb memory')
