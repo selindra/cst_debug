@@ -6,7 +6,7 @@ Created on Thu Nov 18 10:43:15 2021
 @author: selin
 """
 import matplotlib.pyplot as plt
-
+import sys 
 
 def filesumscript(filename):
     with open(filename) as f:
@@ -17,13 +17,19 @@ def filesumscript(filename):
                 s+=int(line[4])
     return s
 
-sum = []
-for i in range(0,238):   
-    i+=1
-    filename = '/Users/selin/Documents/git/cst_debug/file{}.txt'.format(i)
-    x=filesumscript(filename)/10e+8
-    sum.append(x)
+def main():
+    sum = []
+    for file in sys.argv[1:]:   
+        x=filesumscript(file)/10e+8
+        sum.append(x)
+        
+    plt.plot(sum, 'red')           
+    plt.xlabel('File number')
+    plt.ylabel('Gb memory')
+    plt.show()
     
-plt.plot(sum, 'palevioletred')           
-plt.xlabel('File number')
-plt.ylabel('Gb memory')
+
+#----------------------------------
+
+if __name__ == '__main__':
+    main()
