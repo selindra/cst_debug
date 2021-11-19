@@ -26,7 +26,7 @@ def main():
     plt.plot(sum, 'red')           
     plt.xlabel('File number')
     plt.ylabel('Gb memory')
-    plt.show()
+    plt.savefig('result.png')
     
 
 #----------------------------------
